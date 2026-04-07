@@ -11,7 +11,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #f5f5f5;
+    background: #fff;
     font-family: -apple-system, system-ui, sans-serif;
   }
 
@@ -106,6 +106,90 @@
     min-width: 28px;
     text-align: right;
   }
+
+  @media (max-width: 480px) {
+    body {
+      align-items: flex-start;
+      padding-top: 12px;
+    }
+
+    .artwork-wrapper {
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+      align-items: center;
+    }
+
+    .dot-controls {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+      gap: 0;
+      padding: 8px 0;
+      order: 2;
+    }
+
+    .dot-ctrl {
+      position: relative;
+    }
+
+    .dot-ctrl .dot {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border-radius: 50%;
+    }
+
+    .dot-ctrl .dot::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #222;
+      display: block;
+    }
+
+    .dot-ctrl .slider-panel {
+      display: none;
+    }
+
+    .mobile-slider {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.97);
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin: 0 12px;
+      order: 3;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .mobile-slider .ctrl-label {
+      font-size: 11px;
+      color: #888;
+      min-width: 44px;
+    }
+
+    .mobile-slider input[type="range"] {
+      flex: 1;
+      margin: 0;
+      accent-color: #555;
+      height: 14px;
+    }
+
+    .mobile-slider .ctrl-val {
+      font-size: 11px;
+      font-weight: 600;
+      color: #333;
+      min-width: 32px;
+      text-align: right;
+    }
+  }
 </style>
 </head>
 <body>
@@ -186,6 +270,11 @@
   </div>
 
   <canvas id="c"></canvas>
+  <div class="mobile-slider" id="mobile-slider" style="display:none;">
+    <span class="ctrl-label" id="ms-label">reach</span>
+    <input type="range" id="ms-range">
+    <span class="ctrl-val" id="ms-val">50</span>
+  </div>
 </div>
 
 <script>
@@ -411,7 +500,10 @@
 
   // --- Resize ---
   function resize() {
-    size = BASE_SIZE;
+    const isMobile = window.innerWidth <= 480;
+    const maxW = isMobile ? window.innerWidth - 16 : BASE_SIZE;
+    const maxH = isMobile ? window.innerHeight - 100 : BASE_SIZE;
+    size = Math.min(BASE_SIZE, maxW, maxH);
 
     dpr = window.devicePixelRatio || 1;
     canvas.width = size * dpr;
@@ -464,22 +556,61 @@
   bindSlider('s-density', 'v-density', (v) => { DENSITY = v; generateLines(); loadStartTime = performance.now() - 5000; });
   bindSlider('s-spread', 'v-spread', (v) => { SPREAD = v; generateLines(); loadStartTime = performance.now() - 5000; });
 
+  // Mobile slider wiring
+  const mobileSlider = document.getElementById('mobile-slider');
+  const msRange = document.getElementById('ms-range');
+  const msLabel = document.getElementById('ms-label');
+  const msVal = document.getElementById('ms-val');
+  let activeMobileCtrl = null;
+
+  function isMobile() { return window.innerWidth <= 480; }
+
+  function showMobileSlider(ctrlName) {
+    const dotCtrl = document.querySelector(`.dot-ctrl[data-ctrl="${ctrlName}"]`);
+    const slider = dotCtrl.querySelector('input[type="range"]');
+    const label = dotCtrl.querySelector('.ctrl-label').textContent;
+
+    msLabel.textContent = label;
+    msRange.min = slider.min;
+    msRange.max = slider.max;
+    msRange.step = slider.step;
+    msRange.value = slider.value;
+    msVal.textContent = slider.value;
+    activeMobileCtrl = ctrlName;
+    mobileSlider.style.display = 'flex';
+
+    msRange.oninput = () => {
+      slider.value = msRange.value;
+      slider.dispatchEvent(new Event('input'));
+      msVal.textContent = parseFloat(msRange.value);
+    };
+  }
+
   // Touch support for dots: tap to toggle active state
   document.querySelectorAll('.dot-ctrl .dot').forEach(dot => {
     dot.addEventListener('click', (e) => {
       const parent = dot.closest('.dot-ctrl');
+      const ctrlName = parent.dataset.ctrl;
       const wasActive = parent.classList.contains('active');
       // close all
       document.querySelectorAll('.dot-ctrl.active').forEach(el => el.classList.remove('active'));
       // toggle this one
-      if (!wasActive) parent.classList.add('active');
+      if (!wasActive) {
+        parent.classList.add('active');
+        if (isMobile()) showMobileSlider(ctrlName);
+      } else {
+        mobileSlider.style.display = 'none';
+        activeMobileCtrl = null;
+      }
     });
   });
 
   // Close active dot control when clicking elsewhere
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.dot-ctrl')) {
+    if (!e.target.closest('.dot-ctrl') && !e.target.closest('.mobile-slider')) {
       document.querySelectorAll('.dot-ctrl.active').forEach(el => el.classList.remove('active'));
+      mobileSlider.style.display = 'none';
+      activeMobileCtrl = null;
     }
   });
 
