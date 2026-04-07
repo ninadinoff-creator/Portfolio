@@ -17,6 +17,7 @@
 
   .artwork-wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 0;
     position: relative;
@@ -32,9 +33,10 @@
   /* --- Dot controls --- */
   .dot-controls {
     display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding-right: 12px;
+    flex-direction: row;
+    gap: 7px;
+    padding-top: 8px;
+    order: 2;
   }
 
   .dot-ctrl {
@@ -60,9 +62,10 @@
 
   .dot-ctrl .slider-panel {
     position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    bottom: auto;
+    top: 100%;
+    transform: translateX(-50%) translateY(4px);
     background: rgba(255,255,255,0.97);
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -71,7 +74,6 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
-    transform: translateY(-50%) translateX(-4px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     z-index: 10;
     display: flex;
@@ -83,7 +85,7 @@
   .dot-ctrl.active .slider-panel {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(-50%) translateX(0);
+    transform: translateX(-50%) translateY(4px);
   }
 
   .slider-panel .ctrl-label {
