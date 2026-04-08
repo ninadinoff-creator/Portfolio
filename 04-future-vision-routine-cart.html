@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prose Case Study — Future Vision: Routine & Cart Redesign</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ── Vision flow (page-specific) ── */
+  .vision-flow {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+  .vision-step {
+    flex: 1;
+    min-width: 160px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+  }
+  .vision-step::after {
+    content: '\2192';
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #ccc;
+  }
+  .vision-step:last-child::after { display: none; }
+  .vision-step .step-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #1a9e8f;
+    margin-bottom: 8px;
+  }
+  .vision-step .step-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+  .vision-step .step-desc {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.5;
+  }
+
+  .status-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #e8f5f3;
+    color: #1a9e8f;
+  }
+
+  .img-full { margin: 40px 0; }
+  .img-full img { width: 100%; height: auto; display: block; border-radius: 12px; }
+
+  @media (max-width: 768px) {
+    .vision-flow { flex-direction: column; }
+    .vision-step::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-wrapper">
+<nav class="nav">
+  <a href="index.html" class="nav-name">Nina <span>Dinoff</span></a>
+  <button class="nav-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html#work" class="active">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="cv.html">CV</a></li>
+  </ul></nav>
+</div>
+
+<!-- ════════════════ HERO ════════════════ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text fade-in fade-in-1">
+      <div class="label"><a href="index.html">&larr; Home</a> &middot; Case Study &middot; Prose</div>
+      <h1>Designing the Next Chapter: Routine &amp; Cart</h1>
+      <p class="subtitle">
+        The cart optimization work revealed something bigger: the cart wasn't just under-optimized &mdash; it was structurally overloaded. This case study covers the vision and in-progress redesign that separates personalization from the transaction &mdash; unlocking both.
+      </p>
+      <dl class="meta-bar">
+        <div>
+          <dt>Role</dt>
+          <dd>Senior Director,<br>Product Design and UX Research</dd>
+        </div>
+        <div>
+          <dt>Timeline</dt>
+          <dd>2025&ndash;present</dd>
+        </div>
+        <div>
+          <dt>Team</dt>
+          <dd>Sr. Product Manager, Product Manager, Sr. Product Designer, Product Designer, Sr. UX Researcher, Data Analyst, Engineering</dd>
+        </div>
+        <div>
+          <dt>Status</dt>
+          <dd><span class="status-badge">In Progress</span></dd>
+        </div>
+      </dl>
+    </div>
+    <div class="hero-phone">
+      <!-- Replace with hero image/video when available -->
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ INSIGHT ════════════════ -->
+<section class="scroll-fade">
+  <div class="section-label">The Insight</div>
+  <h2>All of this was pointing somewhere.</h2>
+  <div class="two-col equal img-first">
+    <div class="scroll-fade">
+      <!-- Replace with image when available -->
+      <div class="ba-card">
+        <div class="ba-col">
+          <!-- <img src="images/..." alt="Routine concept"> -->
+        </div>
+      </div>
+    </div>
+    <div>
+      <p>
+        Every experiment in the cart surfaced the same structural issue: the cart was trying to introduce personalization, explain pricing, and close the sale &mdash; all at once. It couldn't do any of those things well because it was doing all of them.
+      </p>
+      <p>
+        The new Routine page gives personalization the space it deserves, while the cart becomes a clean transaction layer. Separating them also unlocks a cart that can handle multiple product categories, setting the foundation for Prose's next phase of growth.
+      </p>
+      <div class="tradeoff">
+        <div class="tradeoff-label">Key Evidence</div>
+        <p>Cart experiments consistently showed that surfacing personalization details (ingredients, formulation rationale) lifted engagement and conversion. But those elements competed with pricing and checkout for space and attention. The solution wasn't better optimization &mdash; it was a new architecture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ VISION ════════════════ -->
+<section class="scroll-fade">
+  <div class="section-label">The Vision</div>
+  <h2>A new routine and cart.</h2>
+  <p>
+    The redesign introduces a dedicated Routine page between consultation results and the cart. This creates space for personalization, education, and decision-making before users ever see a checkout button.
+  </p>
+
+  <div class="vision-flow">
+    <div class="vision-step">
+      <div class="step-label">Step 1</div>
+      <div class="step-title">Scoring</div>
+      <div class="step-desc">Consultation results visualized &mdash; 85+ variables analyzed, personalized profile displayed.</div>
+    </div>
+    <div class="vision-step">
+      <div class="step-label">Step 2</div>
+      <div class="step-title">Routine</div>
+      <div class="step-desc">Personalized product recommendations with full details, ingredients, and quick-view PDPs.</div>
+    </div>
+    <div class="vision-step">
+      <div class="step-label">Step 3</div>
+      <div class="step-title">Order Summary</div>
+      <div class="step-desc">Clean summary with pricing, discounts, and subscription terms in one scannable view.</div>
+    </div>
+    <div class="vision-step">
+      <div class="step-label">Step 4</div>
+      <div class="step-title">Cart</div>
+      <div class="step-desc">Focused on the transaction. Edit quantities, manage subscriptions, proceed to checkout.</div>
+    </div>
+  </div>
+
+  <div class="img-full">
+    <!-- Replace with screens image when available -->
+    <!-- <img src="images/..." alt="New routine and cart screens"> -->
+  </div>
+</section>
+
+<!-- ════════════════ WHAT CHANGES ════════════════ -->
+<section class="scroll-fade">
+  <div class="section-label">What Changes</div>
+  <h2>Separation creates clarity.</h2>
+  <div class="two-col equal img-first">
+    <div class="scroll-fade">
+      <!-- Replace with image when available -->
+      <div class="ba-card">
+        <div class="ba-col">
+          <!-- <img src="images/..." alt="New experience"> -->
+        </div>
+      </div>
+    </div>
+    <div>
+      <p>
+        The Routine page becomes the "reveal" moment &mdash; where users meet their custom formulas for the first time. Each product shows the user's name, a full ingredient breakdown, efficacy claims, and a quick-view PDP. Users build understanding and confidence before they're asked to commit.
+      </p>
+      <p>
+        The cart, freed from doing the work of personalization, becomes a proper e-commerce cart: clear pricing, easy editing, straightforward checkout. It can also now support multiple product categories (hair + skin) in a way the old cart never could.
+      </p>
+      <div class="tradeoff">
+        <div class="tradeoff-label">Unlocking Growth</div>
+        <p>As Prose expands into skincare and beyond, the cart must handle multi-category orders. The current architecture can't do this gracefully. The Routine + Cart separation is as much about future scalability as it is about current UX.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ THE FULL FUNNEL ════════════════ -->
+<section class="scroll-fade">
+  <div class="section-label">The Full Funnel</div>
+  <h2>The full funnel, cohesive at last.</h2>
+  <p>
+    With the Routine and Cart redesign, the acquisition funnel finally tells one continuous story: from the homepage where you enter your name, through the consultation that builds your profile, into a Routine page that reveals your personalized formulas, and a cart that makes buying simple.
+  </p>
+  <p>
+    Every piece of work over the past 18 months &mdash; the homepage redesign, the consultation experiments, the cart optimization phases &mdash; built the evidence and earned the confidence to make this happen.
+  </p>
+
+  <div class="vision-flow" style="margin-top: 40px;">
+    <div class="vision-step">
+      <div class="step-label">Upper</div>
+      <div class="step-title">Homepage</div>
+      <div class="step-desc">Trust, brand, personalization preview.</div>
+    </div>
+    <div class="vision-step">
+      <div class="step-label">Mid</div>
+      <div class="step-title">Consultation</div>
+      <div class="step-desc">Context, engagement, completion.</div>
+    </div>
+    <div class="vision-step">
+      <div class="step-label">New</div>
+      <div class="step-title">Routine</div>
+      <div class="step-desc">The reveal. Personalization front and center.</div>
+    </div>
+    <div class="vision-step">
+      <div class="step-label">Lower</div>
+      <div class="step-title">Cart</div>
+      <div class="step-desc">Clean transaction. Multi-category ready.</div>
+    </div>
+  </div>
+
+  <div class="img-full">
+    <!-- Replace with full funnel image when available -->
+    <!-- <img src="images/..." alt="Complete updated funnel"> -->
+  </div>
+</section>
+
+<!-- ════════════════ CUMULATIVE IMPACT ════════════════ -->
+<section class="scroll-fade">
+  <div class="section-label">The Outcome</div>
+  <h2>Where the whole funnel landed.</h2>
+  <p>
+    These are the cumulative results of the full acquisition body of work &mdash; the foundation that this redesign builds on.
+  </p>
+  <div class="results-grid">
+    <div class="results-col">
+      <div class="stat">
+        <div class="number">+34%</div>
+        <div class="desc">YoY prospect session conversion</div>
+      </div>
+    </div>
+    <div class="results-col">
+      <div class="stat">
+        <div class="number">+7%</div>
+        <div class="desc">consultation view rate</div>
+      </div>
+      <div class="stat">
+        <div class="number">+12%</div>
+        <div class="desc">checkout rate</div>
+      </div>
+    </div>
+    <div class="results-col">
+      <div class="stat">
+        <div class="number">+5%</div>
+        <div class="desc">first order rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ REFLECTION ════════════════ -->
+<section class="reflection scroll-fade">
+  <div class="section-label">Reflection</div>
+  <h2>Strategic leadership, hands-on craft.</h2>
+  <p>
+    I set the direction, stayed close to the craft, and changed how the team worked. When something didn't work, we came back smarter. The result is a funnel that finally tells one story &mdash; from the first impression to the first order.
+  </p>
+  <p style="margin-top: 12px;">
+    This redesign isn't the end of the work. It's the natural conclusion of 18 months of learning &mdash; and the beginning of what Prose's experience should have always been.
+  </p>
+</section>
+
+<script src="scroll-animate.js"></script>
+<div class="global-footer"><span>A work in progress</span><span class="dot"> &bull; </span><span>100% vibe coded by Nina Dinoff &copy;2026</span></div>
+</body>
+</html>

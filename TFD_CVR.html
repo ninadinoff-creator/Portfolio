@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Farmer's Dog — Product Expansion</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .slideshow {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 60px 80px;
+    position: relative;
+  }
+  .slideshow-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .slide {
+    display: none;
+    width: 100%;
+  }
+  .slide.active {
+    display: block;
+  }
+  .slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .slideshow-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .slide-arrow {
+    background: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: #1a1a1a;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .slide-arrow:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+  }
+  .slide-dots {
+    display: flex;
+    gap: 8px;
+  }
+  .slide-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ddd;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s;
+  }
+  .slide-dot.active {
+    background: #1a9e8f;
+  }
+  .slide-counter {
+    font-size: 13px;
+    color: #999;
+    letter-spacing: -0.44px;
+  }
+  @media (max-width: 768px) {
+    .slideshow { padding: 20px 28px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-wrapper">
+<nav class="nav">
+  <a href="index.html" class="nav-name">Nina <span>Dinoff</span></a>
+  <button class="nav-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html#work" class="active">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="cv.html">CV</a></li>
+  </ul>
+</nav>
+</div>
+
+<!-- ════════════════ BREADCRUMB ════════════════ -->
+<div style="max-width:1200px; margin:0 auto; padding:30px 60px;">
+  <div class="label"><a href="index.html" style="color:#1a9e8f; text-decoration:none;">&larr; Home</a> &middot; Case Study &middot; The Farmer's Dog</div>
+</div>
+
+<!-- ════════════════ SLIDESHOW ════════════════ -->
+<div class="slideshow">
+  <div class="slideshow-container">
+    <div class="slide active"><img src="images/TFD_CVR/Frame 1.png" alt="Slide 1"></div>
+    <div class="slide"><img src="images/TFD_CVR/Frame 2.png" alt="Slide 2"></div>
+    <div class="slide"><img src="images/TFD_CVR/Frame 4.png" alt="Slide 3"></div>
+    <div class="slide"><img src="images/TFD_CVR/Frame 5.png" alt="Slide 4"></div>
+    <div class="slide"><img src="images/TFD_CVR/Frame 6.png" alt="Slide 5"></div>
+    <div class="slide"><img src="images/TFD_CVR/Frame 7.png" alt="Slide 6"></div>
+    <div class="slide"><img src="images/TFD_CVR/Frame 8.png" alt="Slide 7"></div>
+    <div class="slide"><img src="images/TFD_CVR/Frame 9.png" alt="Slide 8"></div>
+  </div>
+  <div class="slideshow-controls">
+    <button class="slide-arrow" id="prev-slide">&larr;</button>
+    <div class="slide-dots" id="slide-dots"></div>
+    <button class="slide-arrow" id="next-slide">&rarr;</button>
+    <span class="slide-counter" id="slide-counter">1 / 8</span>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('slide-dots');
+  const counter = document.getElementById('slide-counter');
+  const total = slides.length;
+  let current = 0;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.classList.add('slide-dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+    counter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  document.getElementById('prev-slide').addEventListener('click', () => {
+    goTo(current === 0 ? total - 1 : current - 1);
+  });
+
+  document.getElementById('next-slide').addEventListener('click', () => {
+    goTo(current === total - 1 ? 0 : current + 1);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goTo(current === 0 ? total - 1 : current - 1);
+    if (e.key === 'ArrowRight') goTo(current === total - 1 ? 0 : current + 1);
+  });
+</script>
+
+<script src="scroll-animate.js"></script>
+<div class="global-footer"><span>A work in progress</span><span class="dot"> &bull; </span><span>100% vibe coded by Nina Dinoff &copy;2026</span></div>
+</body>
+</html>

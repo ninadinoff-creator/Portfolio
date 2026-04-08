@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nina Dinoff — Product Design Leader</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ── Hero intro ── */
+  .intro {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 0;
+  }
+  .intro-row {
+    display: flex;
+    gap: 80px;
+    align-items: start;
+  }
+  .intro-image {
+    width: 400px;
+    height: 430px;
+    flex-shrink: 0;
+    overflow: visible;
+  }
+  .intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .intro-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+  }
+  .intro-text h1 {
+    font-size: 43px;
+    font-weight: 400;
+    line-height: 53px;
+    color: #1a1a1a;
+  }
+  .intro-text p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 36px;
+    color: #1a1a1a;
+    letter-spacing: -0.44px;
+  }
+  .intro-text a {
+    color: #06b0a4;
+    text-decoration: none;
+  }
+  .intro-text a:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Work section ── */
+  .work {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .work-header {
+    padding-left: 480px;
+    padding-bottom: 50px;
+    padding-top: 40px;
+  }
+  .work-header h2 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1a9e8f;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .work-header h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #1a9e8f;
+  }
+  .work-content {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+
+  /* ── Company group ── */
+  .company-group {
+    display: flex;
+    gap: 80px;
+    align-items: start;
+  }
+  .company-logo {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    background: #f7f5f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 280px;
+    overflow: hidden;
+    align-self: flex-start;
+  }
+  .company-logo img {
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+  .company-cases {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .case-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    text-decoration: none;
+    color: inherit;
+  }
+  .case-title {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #1a1a1a;
+  }
+  .case-meta {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    line-height: 36px;
+  }
+  .case-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1a1a1a;
+    letter-spacing: -0.44px;
+  }
+  .case-link {
+    font-size: 14px;
+    font-weight: 400;
+    color: #06b0a4;
+    text-decoration: none;
+    letter-spacing: -0.44px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .case-link:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Company group divider ── */
+  .company-group + .company-group {
+    padding-top: 25px;
+  }
+  .company-group + .company-group .company-cases::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: #e8e8e8;
+    margin-bottom: 25px;
+    margin-top: -25px;
+  }
+  .intro-divider {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 40px;
+  }
+  .intro-divider hr {
+    border: none;
+    border-top: 1px solid #e8e8e8;
+  }
+
+  /* ── Contact ── */
+  .contact {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+  .contact h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+  }
+  .contact-info {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .contact-info a {
+    font-size: 15px;
+    color: #06b0a4;
+    text-decoration: none;
+  }
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+  .contact-info span {
+    font-size: 15px;
+    color: #555;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 40px 48px;
+    font-size: 13px;
+    color: #999;
+  }
+
+  @media (max-width: 768px) {
+    .intro { padding: 0 28px; }
+    .intro-row { flex-direction: column; gap: 40px; }
+    .intro-image { width: 100%; height: 300px; }
+    .work { padding: 0 28px; }
+    .work-header { padding-left: 0; }
+    .company-group { flex-direction: column; gap: 24px; }
+    .company-logo { margin-left: 0; }
+    .work-content { gap: 0; }
+    .company-group + .company-group .company-cases::before { display: none; }
+    .company-group + .company-group { border-top: 1px solid #e8e8e8; padding-top: 60px; margin-top: 60px; }
+    .case-meta { flex-direction: column; gap: 0; align-items: flex-start; line-height: 1.6; }
+    .case-title { margin-bottom: 8px; }
+    .case-subtitle, .case-link, .case-title { text-align: left; }
+    .work-header, .contact-info, .footer { padding-left: 0 !important; }
+    .contact-info { flex-direction: column; gap: 0; }
+    .contact-info .dot { display: none; }
+    .cv-date { text-align: left; }
+    .contact { padding: 40px 28px; }
+    .footer { padding: 20px 28px 40px; }
+    .intro-divider, .work-divider { padding: 30px 28px; }
+  }
+</style>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</head>
+<body>
+
+<!-- ════════════════ NAV ════════════════ -->
+<div class="nav-wrapper">
+<nav class="nav">
+  <a href="index.html" class="nav-name">Nina <span>Dinoff</span></a>
+  <button class="nav-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="#work" class="active">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="cv.html">CV</a></li>
+  </ul>
+</nav>
+</div>
+
+<!-- ════════════════ INTRO ════════════════ -->
+<div class="intro">
+  <div class="intro-row">
+    <div class="fade-in fade-in-1">
+      <div class="intro-image">
+        <iframe src="radial-art.html" style="width:100%; height:100%; border:none;"></iframe>
+      </div>
+    </div>
+    <div class="intro-text">
+      <h1 class="fade-in fade-in-1">Hello.<br>I'm Nina, a product design leader, strategist, and designer.</h1>
+      <p class="fade-in fade-in-2">
+        I care about creating beautiful things that people love to use. I've built teams, shaped strategy, and never lost touch with the craft at <a href="https://www.prose.com" target="_blank">Prose</a>, <a href="https://www.thefarmersdog.com" target="_blank">The Farmer's Dog</a>, and many companies across every stage of growth. When I'm not in pixels, I'm in the kitchen, doodling, or playing with fire. <a href="https://www.ninadinoffart.com" target="_blank">Literally</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ WORK ════════════════ -->
+<div class="work">
+  <div class="work-header scroll-fade" id="work" style="scroll-margin-top: 80px;">
+    <h2>Work</h2>
+  </div>
+
+  <div class="work-content">
+
+    <!-- Prose -->
+    <div class="company-group scroll-fade">
+      <div class="company-logo" style="background:none;">
+        <img src="images/logos/Prose.logo.circle.png" alt="Prose" style="max-width:100%; max-height:100%; border-radius:50%;">
+      </div>
+      <div class="company-cases">
+        <div class="case-item scroll-fade">
+          <div class="case-title">Upper funnel redesign</div>
+          <div class="case-meta">
+            <span class="case-subtitle">Building trust before the first click</span>
+            <a href="01-upper-funnel-marketing-pages.html" class="case-link">See case study &rarr;</a>
+          </div>
+        </div>
+        <div class="case-item scroll-fade">
+          <div class="case-title">Consultation experiments</div>
+          <div class="case-meta">
+            <span class="case-subtitle">Building Onboarding Momentum</span>
+            <a href="02-mid-funnel-consultation.html" class="case-link">See case study &rarr;</a>
+          </div>
+        </div>
+        <div class="case-item scroll-fade">
+          <div class="case-title">Cart and Checkout</div>
+          <div class="case-meta">
+            <span class="case-subtitle">Turning a Confusing Cart Into a Conversion Engine</span>
+            <a href="03-lower-funnel-cart-checkout.html" class="case-link">See case study &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Farmer's Dog -->
+    <div class="company-group scroll-fade">
+      <div class="company-logo" style="background:none;">
+        <img src="images/logos/TFD.logo.circle.png" alt="The Farmer's Dog" style="max-width:100%; max-height:100%; border-radius:50%;">
+      </div>
+      <div class="company-cases">
+        <div class="case-item scroll-fade">
+          <div class="case-title">Account self-service</div>
+          <div class="case-meta">
+            <span class="case-subtitle">Personalized customer subscription journey</span>
+            <a href="TFD_RET.html" class="case-link">See case study &rarr;</a>
+          </div>
+        </div>
+        <div class="case-item scroll-fade">
+          <div class="case-title">Product expansion</div>
+          <div class="case-meta">
+            <span class="case-subtitle">A new product launch</span>
+            <a href="TFD_CVR.html" class="case-link">See case study &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Citi -->
+    <div class="company-group scroll-fade">
+      <div class="company-logo" style="background:none;">
+        <img src="images/logos/Citi.logo.circle.png" alt="Citi" style="max-width:100%; max-height:100%; border-radius:50%;">
+      </div>
+      <div class="company-cases">
+        <div class="case-item scroll-fade">
+          <div class="case-title">Beacon</div>
+          <div class="case-meta">
+            <span class="case-subtitle">Gamified budgeting mobile app</span>
+            <a href="Beacon.html" class="case-link">See case study &rarr;</a>
+          </div>
+        </div>
+        <div class="case-item scroll-fade">
+          <div class="case-title">Empower</div>
+          <div class="case-meta">
+            <span class="case-subtitle">Connected finance mobile app</span>
+            <a href="Empower.html" class="case-link">See case study &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Architizer -->
+    <div class="company-group scroll-fade">
+      <div class="company-logo" style="background:none;">
+        <img src="images/logos/Architizer.logo.circle.png" alt="Architizer" style="max-width:100%; max-height:100%; border-radius:50%;">
+      </div>
+      <div class="company-cases">
+        <div class="case-item scroll-fade">
+          <div class="case-title">Architizer Source</div>
+          <div class="case-meta">
+            <span class="case-subtitle">Two-sided marketplace</span>
+            <a href="Architizer.html" class="case-link">See case study &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════ CONTACT ════════════════ -->
+  <div id="contact" style="padding-top: 100px;">
+    <div class="work-header scroll-fade" style="padding-left: 480px; padding-bottom: 50px; padding-top: 0;">
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-info scroll-fade" style="padding-left: 480px;">
+      <a href="mailto:ninadinoff@gmail.com">ninadinoff@gmail.com</a><span class="dot"> · </span><a href="https://www.linkedin.com/in/ninadinoff" target="_blank">LinkedIn</a><span class="dot"> · </span><span>Brooklyn, NY</span>
+    </div>
+  </div>
+
+</div>
+
+<script src="scroll-animate.js"></script>
+
+<div class="global-footer"><span>A work in progress</span><span class="dot"> &bull; </span><span>100% vibe coded by Nina Dinoff &copy;2026</span></div>
+</body>
+</html>

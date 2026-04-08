@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400&display=swap" rel="stylesheet">
 <title>Radial Burst</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +35,7 @@
   .dot-controls {
     display: flex;
     flex-direction: row;
-    gap: 7px;
+    gap: 2px;
     padding-top: 8px;
     order: 2;
   }
@@ -46,17 +47,30 @@
   }
 
   .dot-ctrl .dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dot-ctrl .dot::after {
+    content: '';
     width: 7px;
     height: 7px;
     border-radius: 50%;
     background: #222;
-    cursor: pointer;
-    flex-shrink: 0;
+    display: block;
     transition: transform 0.2s ease;
   }
 
-  .dot-ctrl:hover .dot,
-  .dot-ctrl.active .dot {
+  .dot-ctrl:hover .dot::after,
+  .dot-ctrl.active .dot::after {
     transform: scale(1.4);
   }
 
@@ -81,7 +95,6 @@
     gap: 8px;
   }
 
-  .dot-ctrl:hover .slider-panel,
   .dot-ctrl.active .slider-panel {
     opacity: 1;
     pointer-events: auto;
@@ -109,7 +122,11 @@
     text-align: right;
   }
 
-  @media (max-width: 480px) {
+  .capsule-toggle {
+    display: none;
+  }
+
+  @media (max-width: 380px) {
     body {
       align-items: flex-start;
       padding-top: 12px;
@@ -126,18 +143,23 @@
       flex-direction: row;
       flex-wrap: nowrap;
       justify-content: center;
-      gap: 0;
       padding: 8px 0;
       order: 2;
+      position: relative;
     }
 
     .dot-ctrl {
       position: relative;
+      display: none;
+    }
+
+    .dot-controls.expanded .dot-ctrl {
+      display: flex;
     }
 
     .dot-ctrl .dot {
-      width: 40px;
-      height: 40px;
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -152,6 +174,31 @@
       border-radius: 50%;
       background: #222;
       display: block;
+    }
+
+    .capsule-toggle {
+      display: flex;
+      width: 40px;
+      height: 32px;
+      border-radius: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin: 0 auto;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+    }
+    .capsule-toggle::after {
+      content: '';
+      width: 40px;
+      height: 8px;
+      border-radius: 4px;
+      background: #222;
+    }
+
+    .dot-controls.expanded .capsule-toggle {
+      display: none;
     }
 
     .dot-ctrl .slider-panel {
@@ -269,10 +316,12 @@
         <span class="ctrl-val" id="v-spread">1</span>
       </div>
     </div>
+    <button class="capsule-toggle" onclick="this.parentElement.classList.add('expanded'); this.style.display='none';"></button>
   </div>
 
-  <canvas id="c"></canvas>
-  <div class="mobile-slider" id="mobile-slider" style="display:none;">
+  <canvas id="c" style="order:1"></canvas>
+  <p class="play-hint" style="order:4; font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; color:#888; margin:16px 0 0; text-align:center;">Play with me</p>
+  <div class="mobile-slider" id="mobile-slider" style="display:none; order:3;">
     <span class="ctrl-label" id="ms-label">reach</span>
     <input type="range" id="ms-range">
     <span class="ctrl-val" id="ms-val">50</span>
@@ -351,8 +400,11 @@
       this.radialOffset = 0;
       this.radialVel = 0;
       this.breathePhase = Math.random() * Math.PI * 2;
-      this.breatheSpeed = 0.0004 + Math.random() * 0.0003;
-      this.breatheAmp = 0.4 + Math.random() * 0.6;
+      this.breatheSpeed = 0.0006 + Math.random() * 0.0006;
+      this.breatheAmp = 0.8 + Math.random() * 1.2;
+      this.driftPhase = Math.random() * Math.PI * 2;
+      this.driftSpeed = 0.0002 + Math.random() * 0.0003;
+      this.driftAmp = 0.5 + Math.random() * 1.0;
 
       this.cosA = Math.cos(this.angle);
       this.sinA = Math.sin(this.angle);
@@ -373,9 +425,11 @@
         this.loadProgress = 1;
       }
 
-      // Gentle ambient breathing
+      // Ambient floating — two overlapping waves for organic drift
       const breathe = Math.sin(now * this.breatheSpeed + this.breathePhase);
-      this.radialVel += breathe * this.breatheAmp * 0.002;
+      const drift = Math.sin(now * this.driftSpeed + this.driftPhase);
+      this.radialVel += breathe * this.breatheAmp * 0.012;
+      this.radialVel += drift * this.driftAmp * 0.007;
 
       // Repulsion — push outward along radial axis only
       if (mouse.active) {
@@ -534,7 +588,7 @@
 
   canvas.addEventListener('mousemove', (e) => { const p = getPos(e); mouse.x = p.x; mouse.y = p.y; mouse.active = true; });
   canvas.addEventListener('mouseleave', () => { mouse.active = false; mouse.x = -9999; mouse.y = -9999; });
-  canvas.addEventListener('touchstart', (e) => { e.preventDefault(); const p = getPos(e); mouse.x = p.x; mouse.y = p.y; mouse.active = true; }, { passive: false });
+  canvas.addEventListener('touchstart', (e) => { e.preventDefault(); const p = getPos(e); mouse.x = p.x; mouse.y = p.y; mouse.active = true; document.querySelectorAll('.dot-ctrl.active').forEach(el => el.classList.remove('active')); mobileSlider.style.display = 'none'; activeMobileCtrl = null; }, { passive: false });
   canvas.addEventListener('touchmove', (e) => { e.preventDefault(); const p = getPos(e); mouse.x = p.x; mouse.y = p.y; mouse.active = true; }, { passive: false });
   canvas.addEventListener('touchend', () => { mouse.active = false; mouse.x = -9999; mouse.y = -9999; });
 

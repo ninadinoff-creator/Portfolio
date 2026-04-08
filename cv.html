@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nina Dinoff — CV</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .cv {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ── Intro ── */
+  .cv-intro {
+    display: flex;
+    gap: 80px;
+    align-items: start;
+    padding: 60px 0 40px;
+  }
+  .cv-intro-left {
+    width: 400px;
+    flex-shrink: 0;
+  }
+  .cv-intro-left h1 {
+    font-size: 43px;
+    font-weight: 400;
+    line-height: 53px;
+    color: #1a1a1a;
+  }
+  .cv-intro-right {
+    flex: 1;
+  }
+  .cv-intro-right p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 36px;
+    color: #1a1a1a;
+  }
+  .cv-intro-right .cv-contact-row {
+    display: flex;
+    gap: 32px;
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  .cv-intro-right .cv-contact-row a {
+    color: #06b0a4;
+    text-decoration: none;
+  }
+  .cv-intro-right .cv-contact-row span {
+    color: #555;
+  }
+
+  /* ── Section eyebrow ── */
+  .cv-section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1a9e8f;
+    margin-bottom: 30px;
+    padding-left: 480px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cv-section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #1a9e8f;
+  }
+
+  /* ── Experience entries ── */
+  .cv-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+  .cv-entry {
+    display: flex;
+    gap: 80px;
+    align-items: baseline;
+  }
+  .cv-date {
+    width: 400px;
+    flex-shrink: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1a9e8f;
+    text-align: right;
+  }
+  .cv-details {
+    flex: 1;
+  }
+  .cv-details h3 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+  }
+  .cv-details h3 .cv-title {
+    font-weight: 700;
+  }
+  .cv-details .cv-company {
+    color: #999;
+    font-weight: 400;
+  }
+  .cv-details p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  .cv-details ul {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+    padding-left: 16px;
+    margin: 0;
+  }
+  .cv-details li {
+    margin-bottom: 4px;
+  }
+
+  /* ── Expertise / Education / Contact content ── */
+  .cv-content-right {
+    padding-left: 480px;
+    margin-bottom: 60px;
+  }
+  .cv-content-right ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+    padding-left: 16px;
+  }
+  .cv-content-right p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  .cv-content-right p span {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .cv-content-right .contact-row {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .cv-content-right .contact-row a {
+    font-size: 14px;
+    color: #06b0a4;
+    text-decoration: none;
+  }
+  .cv-content-right .contact-row a:hover {
+    text-decoration: underline;
+  }
+  .cv-content-right .contact-row span {
+    font-size: 14px;
+    color: #555;
+    font-weight: 400;
+  }
+
+  .cv-footer {
+    font-size: 13px;
+    color: #999;
+    padding: 24px 0 48px;
+    padding-left: 480px;
+  }
+
+  @media (max-width: 768px) {
+    .cv { padding: 0 28px; }
+    .cv-intro { flex-direction: column; gap: 24px; }
+    .cv-intro-left { width: 100%; }
+    .cv-entry { flex-direction: column; gap: 4px; }
+    .cv-date { width: 100%; text-align: left; }
+    .cv-section-label, .cv-content-right, .cv-footer { padding-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-wrapper">
+<nav class="nav">
+  <a href="index.html" class="nav-name">Nina <span>Dinoff</span></a>
+  <button class="nav-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="cv.html" class="active">CV</a></li>
+  </ul>
+</nav>
+</div>
+
+<div class="cv">
+
+  <!-- ════════════════ INTRO ════════════════ -->
+  <div class="cv-intro">
+    <div class="cv-intro-left">
+    </div>
+    <div class="cv-intro-right">
+      <div class="contact-info">
+        <a href="mailto:ninadinoff@gmail.com">ninadinoff@gmail.com</a><span class="dot"> · </span><a href="https://www.linkedin.com/in/ninadinoff" target="_blank">LinkedIn</a><span class="dot"> · </span><span>Brooklyn, NY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ EXPERTISE ════════════════ -->
+  <div class="cv-section-label">Expertise</div>
+  <div class="cv-content-right">
+    <ul>
+      <li>Creative and strategic leadership for product design, UX, and innovation</li>
+      <li>Articulation of product vision and insights using data and empathic research</li>
+      <li>Collaborative problem solving</li>
+      <li>Design Thinking coaching and workshop facilitation</li>
+      <li>Team leadership, development, and mentorship</li>
+    </ul>
+  </div>
+
+  <!-- ════════════════ EXPERIENCE ════════════════ -->
+  <div class="cv-section-label">Experience</div>
+  <div class="cv-entries">
+
+    <div class="cv-entry">
+      <div class="cv-date">Prose</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Senior Director of Product Design + UX Research</span> · <span class="cv-company">2024–present</span></h3>
+        <p>I oversee all aspects of the digital experience for Prose, a custom direct-to-consumer beauty subscription service. My core responsibilities include providing product strategy, supervising feature design, maintaining brand alignment, and collaborating with cross-functional partners to drive the product roadmap and exceed product OKRs. I manage and mentor a versatile team of Product Designers and UX Researchers.</p>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">The Farmer's Dog</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Director of Product Design + UX Research</span> · <span class="cv-company">2021–2024</span></h3>
+        <p>Led Product Design for all digital experiences for Customers, Veterinarians, and Customer Experience agents.</p>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">Kin + Carta</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Principal Product Designer + Strategist</span> · <span class="cv-company">2020–2021</span></h3>
+        <p>Provided strategic design leadership, UX, UI design, startup consulting, and collaboration facilitation for digital products.</p>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">Publicis Sapient</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">VP Head of UX</span> · <span class="cv-company">2017–2020</span></h3>
+        <p>Led product design and design strategy for clients including Citibank, GameStop, Tapestry, Wawa, and Comcast.</p>
+        <ul>
+          <li>Conceptualized, pitched, and won over $10M in new business</li>
+          <li>Partnered with business teams to ensure products met business goals, including increased conversion, NPS, AOV, and user engagement, as well as reduced call center volume</li>
+          <li>Facilitated Design Thinking workshops and co-creation sessions</li>
+          <li>Hired, managed, and mentored product design teams up to 15 creatives</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">Contract</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Principal Product Designer</span> · <span class="cv-company">2014–2017</span></h3>
+        <p>Consulted with startups and agencies to define creative strategy, design and launch new product initiatives, and facilitate collaborative design.</p>
+        <ul>
+          <li><strong>Brand New Matter Ventures</strong> and <strong>Neo Innovation</strong> – Designed and advised on strategy for new products in development</li>
+          <li><strong>Architizer Source</strong> – Conceptualized and led founding design and UX for a two-sided marketplace, which raised $8M raised within one year</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">Adjacent to One</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Head of Product Design</span> · <span class="cv-company">2014</span></h3>
+        <p>Oversaw all creative for digital product design studio.</p>
+        <ul>
+          <li>Led the design for enterprise products and web site development</li>
+          <li>Hired, managed, and mentored a team of 10 designers</li>
+          <li>Managed and developed client relationships</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">Liquidnet</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Staff Product Designer</span> · <span class="cv-company">2011–2013</span></h3>
+        <p>Led the design and UX of applications for private shares and high-frequency trading marketplaces. Oversaw global design standards.</p>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">AKQA, JTW, The Barbarian Group</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Art Director (Contract)</span> · <span class="cv-company">2010–2011</span></h3>
+        <p>Conceptualized and designed digital experiences for brands including Samsung, Celebrity Cruises, and Zyrtec.</p>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">Museum of the Moving Image + The Mellon Foundation</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Lead Product Designer</span> · <span class="cv-company">2008–2010</span></h3>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">TD Ameritrade</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Lead Product Designer</span> · <span class="cv-company">2007–2008</span></h3>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">Deutsch</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Associate Creative Director</span> · <span class="cv-company">2006–2007</span></h3>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">Organic</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Associate Creative Director</span> · <span class="cv-company">2004–2005</span></h3>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">Frog</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Senior Designer</span> · <span class="cv-company">2002–2004</span></h3>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-date">Plumb Design</div>
+      <div class="cv-details">
+        <h3><span class="cv-title">Senior Designer</span> · <span class="cv-company">1998–2001</span></h3>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════ EDUCATION ════════════════ -->
+  <div class="cv-section-label">Education</div>
+  <div class="cv-content-right">
+    <p><span>Design Thinkers Academy</span> · Certification in Design Thinking Facilitation</p>
+    <p><span>School of Visual Arts</span> · Impact: Design for Social Change</p>
+    <p><span>Vassar College</span> · B.A. in Art History and Film</p>
+  </div>
+
+
+</div>
+
+<div class="global-footer"><span>A work in progress</span><span class="dot"> &bull; </span><span>100% vibe coded by Nina Dinoff &copy;2026</span></div>
+<script src="scroll-animate.js"></script>
+</body>
+</html>

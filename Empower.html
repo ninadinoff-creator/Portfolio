@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empower by Citi</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .video-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 60px 20px;
+  }
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  @media (max-width: 768px) {
+    .video-container { padding: 20px 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-wrapper">
+<nav class="nav">
+  <a href="index.html" class="nav-name">Nina <span>Dinoff</span></a>
+  <button class="nav-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html#work" class="active">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="cv.html">CV</a></li>
+  </ul>
+</nav>
+</div>
+
+<!-- ════════════════ BREADCRUMB ════════════════ -->
+<div style="max-width:1200px; margin:0 auto; padding:30px 60px;">
+  <div class="label"><a href="index.html" style="color:#1a9e8f; text-decoration:none;">&larr; Home</a> &middot; Case Study &middot; Citi</div>
+</div>
+
+<!-- ════════════════ VIDEO ════════════════ -->
+<div class="video-container">
+  <div class="video-wrapper">
+    <iframe src="https://player.vimeo.com/video/309198639" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- ════════════════ BODY ════════════════ -->
+<section class="scroll-fade">
+</section>
+
+<script src="scroll-animate.js"></script>
+<div class="global-footer"><span>A work in progress</span><span class="dot"> &bull; </span><span>100% vibe coded by Nina Dinoff &copy;2026</span></div>
+</body>
+</html>
